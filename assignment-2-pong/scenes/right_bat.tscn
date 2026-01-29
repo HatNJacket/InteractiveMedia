@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyj5u1clryema"]
+
+[ext_resource type="Script" uid="uid://s65njotlf8q6" path="res://scripts/bat.gd" id="1_2k6gw"]
+[ext_resource type="Texture2D" uid="uid://cnlfk67lfxon5" path="res://assets/Right.png" id="1_ktflc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7aeas"]
+size = Vector2(18, 120)
+
+[node name="RightBat" type="CharacterBody2D"]
+script = ExtResource("1_2k6gw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7aeas")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ktflc")

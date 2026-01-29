@@ -1,0 +1,128 @@
+[gd_scene load_steps=12 format=3 uid="uid://cws8dmmd8gqip"]
+
+[ext_resource type="Script" uid="uid://tgp8irlbrcqw" path="res://scripts/Gameflow.gd" id="1_jjrnv"]
+[ext_resource type="PackedScene" uid="uid://8tjdq011i8o3" path="res://scenes/left_bat.tscn" id="1_ploue"]
+[ext_resource type="PackedScene" uid="uid://dyj5u1clryema" path="res://scenes/right_bat.tscn" id="2_60vo6"]
+[ext_resource type="PackedScene" uid="uid://d0lx0lwm0wnto" path="res://scenes/ball.tscn" id="3_7aeas"]
+[ext_resource type="Texture2D" uid="uid://c4i76wtpok8p4" path="res://assets/ScoreBar.png" id="4_1gkem"]
+[ext_resource type="Script" uid="uid://dqj0dpwuq412t" path="res://scripts/ball.gd" id="4_60vo6"]
+[ext_resource type="FontFile" uid="uid://cjpoqb4rpw12" path="res://assets/fonts/Teko/static/Teko-Medium.ttf" id="7_1gkem"]
+[ext_resource type="FontFile" uid="uid://cd71qev2rkbfo" path="res://assets/fonts/Teko/static/Teko-Light.ttf" id="7_7q0or"]
+[ext_resource type="AudioStream" uid="uid://dyg23ut66scng" path="res://assets/sounds/menu-button.mp3" id="8_7q0or"]
+[ext_resource type="FontFile" uid="uid://cx61etwchx4uu" path="res://assets/fonts/Teko/static/Teko-Bold.ttf" id="9_me32k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60vo6"]
+size = Vector2(1080, 20)
+
+[node name="Pong" type="Node2D"]
+script = ExtResource("1_jjrnv")
+
+[node name="LeftBat" parent="." instance=ExtResource("1_ploue")]
+position = Vector2(30, 350)
+scale = Vector2(1, 1.5)
+
+[node name="RightBat" parent="." instance=ExtResource("2_60vo6")]
+position = Vector2(1050, 350)
+scale = Vector2(1, 1.5)
+
+[node name="Ball" parent="." instance=ExtResource("3_7aeas")]
+position = Vector2(540.00006, 349.00003)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("4_60vo6")
+
+[node name="Scoreboard" type="StaticBody2D" parent="."]
+position = Vector2(540, 24)
+
+[node name="Left" type="Sprite2D" parent="Scoreboard"]
+position = Vector2(370, 0)
+scale = Vector2(-1, 1)
+texture = ExtResource("4_1gkem")
+
+[node name="Right" type="Sprite2D" parent="Scoreboard"]
+position = Vector2(-370, 0)
+texture = ExtResource("4_1gkem")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(540, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_60vo6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, 650)
+shape = SubResource("RectangleShape2D_60vo6")
+
+[node name="UI" type="CanvasLayer" parent="."]
+offset = Vector2(540, 200)
+transform = Transform2D(1, 0, 0, 1, 540, 200)
+
+[node name="MainMenu" type="Control" parent="UI"]
+layout_mode = 3
+anchor_right = 0.91
+anchor_bottom = 0.91600007
+offset_right = -982.80005
+offset_bottom = -586.24005
+
+[node name="Title" type="Label" parent="UI/MainMenu"]
+layout_mode = 0
+offset_left = -181.0
+offset_top = -72.0
+offset_right = 182.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("7_1gkem")
+theme_override_font_sizes/font_size = 100
+text = "MAIN MENU"
+horizontal_alignment = 1
+
+[node name="1Player" type="Label" parent="UI/MainMenu"]
+layout_mode = 0
+offset_left = -153.0
+offset_top = 45.0
+offset_right = 152.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("7_7q0or")
+theme_override_font_sizes/font_size = 80
+text = "> 1 Player"
+horizontal_alignment = 1
+
+[node name="2Player" type="Label" parent="UI/MainMenu"]
+layout_mode = 0
+offset_left = -153.0
+offset_top = 135.0
+offset_right = 152.0
+offset_bottom = 250.0
+theme_override_fonts/font = ExtResource("7_7q0or")
+theme_override_font_sizes/font_size = 80
+text = "2 Players"
+horizontal_alignment = 1
+
+[node name="MainMenuSelectionTick" type="AudioStreamPlayer" parent="UI/MainMenu"]
+stream = ExtResource("8_7q0or")
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -200.0
+offset_right = 40.0
+offset_bottom = -160.0
+
+[node name="LeftScore" type="Label" parent="UI/Control"]
+layout_mode = 0
+offset_left = -190.0
+offset_right = -150.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("9_me32k")
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+
+[node name="RightScore" type="Label" parent="UI/Control"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 190.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("9_me32k")
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
