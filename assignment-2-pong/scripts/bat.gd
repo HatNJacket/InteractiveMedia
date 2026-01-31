@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-@export var SPEED: float = 300.0
+@onready var sprite: Sprite2D = $Sprite2D
+
+@export var SPEED: float = 200.0
 @export var ai_controlled: bool = true
 
 var player_id: int = -1
@@ -10,6 +12,7 @@ var ball: CharacterBody2D = null
 
 var has_target := false
 var target_y := 0.0
+var offset := 120.0
 
 const CEILING := 50.0
 const FLOOR := 640.0
@@ -25,6 +28,9 @@ func _ready() -> void:
 		player_id = 2
 
 	locked_x = global_position.x
+func reset_to_center() -> void:
+	has_target = false
+	target_y = 350.0
 
 func _on_game_mode_changed(two_player_mode: bool) -> void:
 	is_two_player = two_player_mode
@@ -45,17 +51,22 @@ func reflect_between(y: float, top: float, bottom: float) -> float:
 		m = period - m
 	return top + m
 
+func flash_hit() -> void:
+	sprite.modulate = Color.WHITE
+	var flash_tween := create_tween()
+	var sprite_colour = (Color("#4AE1FF") if player_id==1 else Color("#FFD044"))
+	sprite.modulate = sprite_colour
+	flash_tween.tween_property(sprite, "modulate", Color.WHITE, 0.4)
+
 func _physics_process(delta: float) -> void:
 	
 	var y_velocity := 0.0
 	var use_ai := is_preview or ((not is_two_player) and ai_controlled)
-	print(use_ai, ball)
 
 	if use_ai:
 		if ball == null:
 			y_velocity = 0.0
 		else:
-			print("use_ai:", use_ai, " has_target:", has_target, " y_vel:", y_velocity)
 			var bx := ball.global_position.x
 			var by := ball.global_position.y
 			var vx := ball.velocity.x
@@ -73,7 +84,7 @@ func _physics_process(delta: float) -> void:
 				if t > 0.0:
 					var y_pred := by + vy * t
 					y_pred = reflect_between(y_pred, CEILING, FLOOR)
-					y_pred += randf_range(-120.0, 120.0)
+					y_pred += randf_range(-offset, offset)
 					target_y = y_pred
 					has_target = true
 
