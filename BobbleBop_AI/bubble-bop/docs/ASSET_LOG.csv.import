@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://btukfrmt55sgq"
+
+[deps]
+
+files=["res://docs/ASSET_LOG.type.translation", "res://docs/ASSET_LOG.tool.translation", "res://docs/ASSET_LOG.prompt.translation", "res://docs/ASSET_LOG.iterations.translation", "res://docs/ASSET_LOG.manual.translation", "res://docs/ASSET_LOG.main.translation", "res://docs/ASSET_LOG.godot.translation", "res://docs/ASSET_LOG.final.translation"]
+
+source_file="res://docs/ASSET_LOG.csv"
+dest_files=["res://docs/ASSET_LOG.type.translation", "res://docs/ASSET_LOG.tool.translation", "res://docs/ASSET_LOG.prompt.translation", "res://docs/ASSET_LOG.iterations.translation", "res://docs/ASSET_LOG.manual.translation", "res://docs/ASSET_LOG.main.translation", "res://docs/ASSET_LOG.godot.translation", "res://docs/ASSET_LOG.final.translation"]
+
+[params]
+
+compress=true
+delimiter=0

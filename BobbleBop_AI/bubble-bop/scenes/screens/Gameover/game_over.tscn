@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://4rmrt2h7rvte"]
+
+[ext_resource type="Texture2D" uid="uid://c0ll2xeemojic" path="res://assets_ai/processed/generatedgameover.png" id="1_o1ro4"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="OverSprite" type="Sprite2D" parent="."]
+position = Vector2(500, 350)
+texture = ExtResource("1_o1ro4")

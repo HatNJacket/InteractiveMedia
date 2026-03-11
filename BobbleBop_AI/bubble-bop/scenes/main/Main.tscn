@@ -1,0 +1,162 @@
+[gd_scene load_steps=24 format=4 uid="uid://7c6g7vkhoe1a"]
+
+[ext_resource type="Script" uid="uid://3yt3loas2atm" path="res://scenes/main/main.gd" id="1_u1xfj"]
+[ext_resource type="PackedScene" uid="uid://icg1acvgei33" path="res://scenes/world/entities/player/player.tscn" id="2_grv7h"]
+[ext_resource type="Texture2D" uid="uid://c87i38cfsecjd" path="res://assets_ai/processed/generatedbrick.png" id="6_grv7h"]
+[ext_resource type="PackedScene" uid="uid://cx2ry6eein73v" path="res://scenes/world/entities/projectiles/bubble.tscn" id="14_0cxqb"]
+[ext_resource type="PackedScene" uid="uid://bh850l1o8plhm" path="res://scenes/world/entities/enemies/robot.tscn" id="15_ilqpp"]
+[ext_resource type="Texture2D" uid="uid://chf4y31hcywms" path="res://assets/sprites/ui/bg1.png" id="15_tck0d"]
+[ext_resource type="Texture2D" uid="uid://dj1sbefekfc8u" path="res://assets/sprites/ui/title.png" id="16_u8lgh"]
+[ext_resource type="Texture2D" uid="uid://hpf1y05cy2hm" path="res://assets/sprites/ui/space0.png" id="17_n12rl"]
+[ext_resource type="Texture2D" uid="uid://dhg0emrikjqr4" path="res://assets/sprites/ui/space1.png" id="18_0cxqb"]
+[ext_resource type="Texture2D" uid="uid://mf100bepd30b" path="res://assets/sprites/ui/space2.png" id="19_u7tt4"]
+[ext_resource type="PackedScene" uid="uid://4rmrt2h7rvte" path="res://scenes/screens/Gameover/game_over.tscn" id="19_vc03v"]
+[ext_resource type="Texture2D" uid="uid://dlqlq2tdbdnri" path="res://assets/sprites/ui/space3.png" id="20_ilqpp"]
+[ext_resource type="Script" uid="uid://l3a544s6kr3r" path="res://scenes/screens/Menu/menu.gd" id="20_yub1f"]
+[ext_resource type="Texture2D" uid="uid://ch8h1lmpinwi" path="res://assets/sprites/ui/space4.png" id="21_ftc2p"]
+[ext_resource type="Texture2D" uid="uid://h4gykix02ye7" path="res://assets/sprites/ui/space5.png" id="22_04n4k"]
+[ext_resource type="Texture2D" uid="uid://bjmyj5dpp1cu" path="res://assets/sprites/ui/space6.png" id="23_8dhb5"]
+[ext_resource type="Texture2D" uid="uid://b751bndvhyevg" path="res://assets/sprites/ui/space7.png" id="24_ew7m7"]
+[ext_resource type="Texture2D" uid="uid://cdmfyagpxy33v" path="res://assets/sprites/ui/space8.png" id="25_fg4ko"]
+[ext_resource type="Texture2D" uid="uid://b4q1x25v02lt7" path="res://assets/sprites/ui/space9.png" id="26_m1khv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tck0d"]
+texture = ExtResource("6_grv7h")
+texture_region_size = Vector2i(25, 25)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.5, -12.5, 12.5, -12.5, 12.5, 12.5, -12.5, 12.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yub1f"]
+texture = ExtResource("6_grv7h")
+texture_region_size = Vector2i(25, 25)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_u8lgh"]
+tile_size = Vector2i(25, 25)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_tck0d")
+sources/1 = SubResource("TileSetAtlasSource_yub1f")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilqpp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_0cxqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_u7tt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ilqpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ftc2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_04n4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_8dhb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ew7m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_fg4ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m1khv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_n12rl")
+}],
+"loop": true,
+"name": &"pressSpace",
+"speed": 12.0
+}]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_u1xfj")
+player_scene = ExtResource("2_grv7h")
+enemy_scene = ExtResource("15_ilqpp")
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="Level"]
+
+[node name="ParentBubble" parent="Level/Entities" instance=ExtResource("14_0cxqb")]
+visible = false
+position = Vector2(-50, -50)
+
+[node name="Tilemap" type="Node2D" parent="Level"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Level/Tilemap"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAABEAAAAAAAAAAAAAABIAAAAAAAAAAAAAABMAAAAAAAAAAAAAABQAAAAAAAAAAAAAABUAAAAAAAAAAAAAABYAAAAAAAAAAAAAABcAAAAAAAAAAAAnABcAAAAAAAAAAAAnABYAAAAAAAAAAAAnABUAAAAAAAAAAAAnABQAAAAAAAAAAAAnABMAAAAAAAAAAAAnABIAAAAAAAAAAAAnABEAAAAAAAAAAAAnABAAAAAAAAAAAAAnAA8AAAAAAAAAAAAnAA4AAAAAAAAAAAAnAA0AAAAAAAAAAAAnAAwAAAAAAAAAAAAnAAsAAAAAAAAAAAAnAAoAAAAAAAAAAAAnAAkAAAAAAAAAAAAnAAgAAAAAAAAAAAAnAAcAAAAAAAAAAAAnAAYAAAAAAAAAAAAnAAUAAAAAAAAAAAAnAAQAAAAAAAAAAAAnAAMAAAAAAAAAAAAnAAIAAAAAAAAAAAAnAAEAAAAAAAAAAAAnAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAnABgAAAAAAAAAAAAnABkAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAwAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAwAAAAAAAAAAAAaAAsAAAAAAAAAAAAaAAwAAAAAAAAAAAAbAAsAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAsAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAsAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAsAAAAAAAAAAAAgAAwAAAAAAAAAAAAHAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAHABMAAAAAAAAAAAAIABMAAAAAAAAAAAAJABMAAAAAAAAAAAAKABMAAAAAAAAAAAALABMAAAAAAAAAAAAMABMAAAAAAAAAAAANABMAAAAAAAAAAAAOABMAAAAAAAAAAAAPABMAAAAAAAAAAAAQABMAAAAAAAAAAAARABMAAAAAAAAAAAASABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAVABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAaABMAAAAAAAAAAAAbABMAAAAAAAAAAAAcABMAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAHABQAAAAAAAAAAAAIABQAAAAAAAAAAAAJABQAAAAAAAAAAAAKABQAAAAAAAAAAAALABQAAAAAAAAAAAAMABQAAAAAAAAAAAANABQAAAAAAAAAAAAOABQAAAAAAAAAAAAPABQAAAAAAAAAAAAQABQAAAAAAAAAAAARABQAAAAAAAAAAAASABQAAAAAAAAAAAATABQAAAAAAAAAAAAUABQAAAAAAAAAAAAVABQAAAAAAAAAAAAWABQAAAAAAAAAAAAXABQAAAAAAAAAAAAYABQAAAAAAAAAAAAZABQAAAAAAAAAAAAaABQAAAAAAAAAAAAbABQAAAAAAAAAAAAcABQAAAAAAAAAAAAdABQAAAAAAAAAAAAeABQAAAAAAAAAAAAfABQAAAAAAAAAAAAgABQAAAAAAAAAAAAAABoAAAAAAAAAAAAAABsAAAAAAAAAAAABABsAAAAAAAAAAAACABsAAAAAAAAAAAADABsAAAAAAAAAAAAEABsAAAAAAAAAAAAFABsAAAAAAAAAAAAGABsAAAAAAAAAAAAHABsAAAAAAAAAAAAIABsAAAAAAAAAAAAJABsAAAAAAAAAAAAKABsAAAAAAAAAAAALABsAAAAAAAAAAAAMABsAAAAAAAAAAAAbABsAAAAAAAAAAAAcABsAAAAAAAAAAAAdABsAAAAAAAAAAAAeABsAAAAAAAAAAAAfABsAAAAAAAAAAAAgABsAAAAAAAAAAAAhABsAAAAAAAAAAAAiABsAAAAAAAAAAAAjABsAAAAAAAAAAAAkABsAAAAAAAAAAAAlABsAAAAAAAAAAAAmABsAAAAAAAAAAAAnABsAAAAAAAAAAAAnABoAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_u8lgh")
+
+[node name="SpawnMarkers" type="Node2D" parent="Level"]
+
+[node name="PlayerSpawn" type="Marker2D" parent="Level/SpawnMarkers"]
+position = Vector2(500, 75)
+
+[node name="LeftSpawn" type="Marker2D" parent="Level/SpawnMarkers"]
+position = Vector2(288.5, -25)
+
+[node name="RightSpawn" type="Marker2D" parent="Level/SpawnMarkers"]
+position = Vector2(711.5, -25)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(499.49997, 350.00003)
+scale = Vector2(1.42625, 1.4541668)
+texture = ExtResource("15_tck0d")
+
+[node name="Menu" type="Node2D" parent="."]
+script = ExtResource("20_yub1f")
+
+[node name="MenuSprite" type="Sprite2D" parent="Menu"]
+position = Vector2(500, 350)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_u8lgh")
+
+[node name="PressSpace" type="AnimatedSprite2D" parent="Menu"]
+position = Vector2(500, 550)
+sprite_frames = SubResource("SpriteFrames_ilqpp")
+animation = &"pressSpace"
+
+[node name="GameOver" parent="." instance=ExtResource("19_vc03v")]
+position = Vector2(63, 17)
+scale = Vector2(0.9, 0.9)
